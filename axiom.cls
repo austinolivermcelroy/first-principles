@@ -1,0 +1,83 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{axiom}[2026/04/05 First-Principles knowledge base]
+\LoadClass[11pt, a4paper]{article}
+\RequirePackage[a4paper, margin=2.5cm, top=3cm, bottom=3cm]{geometry}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{bm}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{hyperref}
+\RequirePackage{cleveref}
+\RequirePackage{xcolor}
+\RequirePackage{booktabs}
+\RequirePackage{CJKutf8}
+\definecolor{axiom-black}{HTML}{1A1A1A}
+\definecolor{axiom-dark}{HTML}{2D2D2D}
+\definecolor{axiom-mid}{HTML}{5A5A5A}
+\definecolor{axiom-light}{HTML}{9A9A9A}
+\definecolor{axiom-rule}{HTML}{CCCCCC}
+\color{axiom-black}
+\titleformat{\section}
+  {\Large\bfseries\scshape\color{axiom-dark}}
+  {\thesection}{1em}{}
+  [\vspace{-0.5em}\textcolor{axiom-rule}{\rule{\textwidth}{0.4pt}}]
+\titleformat{\subsection}
+  {\large\bfseries\color{axiom-dark}}
+  {\thesubsection}{1em}{}
+\newtheoremstyle{axiomthm}
+  {1em}{1em}
+  {\itshape}
+  {}
+  {\bfseries\color{axiom-dark}}
+  {.}{0.5em}{}
+\newtheoremstyle{axiomdef}
+  {1em}{1em}
+  {\normalfont}
+  {}
+  {\bfseries\color{axiom-dark}}
+  {.}{0.5em}{}
+\theoremstyle{axiomthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{axiomdef}
+\newtheorem{axiom}{Axiom}
+\newtheorem{example}[theorem]{Example}
+\renewcommand{\qedsymbol}{\textcolor{axiom-mid}{$\blacksquare$}}
+\newenvironment{dependencies}{%
+  \noindent\textcolor{axiom-rule}{\rule{\textwidth}{0.4pt}}%
+  \par\vspace{0.3em}%
+  \noindent{\small\textsc{\textcolor{axiom-mid}{Dependencies}}}%
+  \par\vspace{0.3em}%
+  \begin{itemize}[leftmargin=1.5em, itemsep=0pt]
+}{%
+  \end{itemize}
+  \noindent\textcolor{axiom-rule}{\rule{\textwidth}{0.4pt}}
+}
+\newcommand{\dep}[2]{%
+  \item {\small\texttt{\textcolor{axiom-mid}{#1}} - \textcolor{axiom-light}{#2}}%
+}
+\newcommand{\extref}[3]{%
+  \textbf{#2}\,(\textit{#3})\,{\footnotesize\texttt{\textcolor{axiom-light}{[#1]}}}%
+}
+\newcommand{\source}[1]{%
+  \par\vspace{0.5em}
+  \noindent{\footnotesize\textcolor{axiom-light}{\textsc{Source:}\quad#1}}
+  \par\vspace{0.5em}
+}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=axiom-dark,
+  citecolor=axiom-mid,
+  urlcolor=axiom-mid,
+}
